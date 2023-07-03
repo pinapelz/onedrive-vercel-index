@@ -110,7 +110,7 @@
   "The OAuth link for getting the authorisation code has been created. Click on the link above to get the <2>authorisation code</2>. Your browser willopen a new tab to Microsoft's account login page. After logging in and authenticating with your Microsoft account, you will be redirected to a blank page on localhost. Paste <6>the entire redirected URL</6> down below.": "The OAuth link for getting the authorisation code has been created. Click on the link above to get the <2>authorisation code</2>. Your browser willopen a new tab to Microsoft's account login page. After logging in and authenticating with your Microsoft account, you will be redirected to a blank page on localhost. Paste <6>the entire redirected URL</6> down below.",
   "These tokens are used to authenticate yourself into password protected folders, ": "These tokens are used to authenticate yourself into password protected folders, ",
   "These tokens may take a few seconds to populate after you click the button below. ": "These tokens may take a few seconds to populate after you click the button below. ",
-  "This route (the folder itself and the files inside) is password protected. ": "Entry into The Usual Room is password protected. Please enter the password below.",
+  "This route (the folder itself and the files inside) is password protected. ": "Entry into The Usual Room is password protected.",
   "Unavailable": "Unavailable",
   "URL encoded": "URL encoded",
   "Waiting for code...": "Waiting for code...",
