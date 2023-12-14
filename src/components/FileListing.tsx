@@ -199,6 +199,9 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
 
     // Find README.md file to render
     const readmeFile = folderChildren.find(c => c.name.toLowerCase() === 'readme.md')
+    // Some info data related to the video that's archived
+    const infoData = folderChildren.find(c => c.name.toLowerCase() === 'info.md')
+    const timestamps = folderChildren.find(c => c.name.toLowerCase() === 'timestamps.md')
 
     // Find some video file to render
     const videoFile : any = folderChildren.find(c => Boolean(c.video))
@@ -346,6 +349,13 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
       <>
         <Toaster />
 
+        {videoFile && (
+          <div className="mt-4">
+            <VideoPreview file={videoFile} />
+          </div>
+        )
+        }
+
         {layout.name === 'Grid' ? <FolderGridLayout {...folderProps} /> : <FolderListLayout {...folderProps} />}
 
         {!onlyOnePage && (
@@ -383,13 +393,18 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
           </div>
         )}
 
-        {videoFile && (
+        {infoData && (
           <div className="mt-4">
-            <VideoPreview file={videoFile} />
+            <MarkdownPreview file={infoData} path={path} standalone={false} />
           </div>
-        )
-        }
-        
+        )}
+
+        {timestamps && (
+          <div className="mt-4">
+            <MarkdownPreview file={timestamps} path={path} standalone={false} />
+          </div>
+        )}
+
         {readmeFile && (
           <div className="mt-4">
             <MarkdownPreview file={readmeFile} path={path} standalone={false} />
