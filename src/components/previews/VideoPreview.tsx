@@ -148,6 +148,7 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             btnText={t('Customise link')}
             btnIcon="pen"
           />
+          </div>
       </DownloadBtnContainer>
     </>
   )
