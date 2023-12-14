@@ -351,7 +351,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
 
         {videoFile && (
           <div className="mt-4">
-            <VideoPreview file={videoFile} />
+            <VideoPreview file={videoFile} hideDownloadBar={true} />
           </div>
         )
         }

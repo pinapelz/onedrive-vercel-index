@@ -74,7 +74,7 @@ const VideoPlayer: FC<{
   return <Plyr id="plyr" source={plyrSource as Plyr.SourceInfo} options={plyrOptions} />
 }
 
-const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
+const VideoPreview: FC<{ file: OdFileObject; hideDownloadBar?: boolean }> = ({ file, hideDownloadBar }) => {
   const { asPath } = useRouter()
   const hashedToken = getStoredToken(asPath)
   const clipboard = useClipboard()
@@ -125,31 +125,33 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
         )}
       </PreviewContainer>
 
-      <DownloadBtnContainer>
-        <div className="flex flex-wrap justify-center gap-2">
-          <DownloadButton
-            onClickCallback={() => window.open(videoUrl)}
-            btnColor="blue"
-            btnText={t('Download')}
-            btnIcon="file-download"
-          />
-          <DownloadButton
-            onClickCallback={() => {
-              clipboard.copy(`${getBaseUrl()}/api/raw/?path=${asPath}${hashedToken ? `&odpt=${hashedToken}` : ''}`)
-              toast.success(t('Copied direct link to clipboard.'))
-            }}
-            btnColor="pink"
-            btnText={t('Copy direct link')}
-            btnIcon="copy"
-          />
-          <DownloadButton
-            onClickCallback={() => setMenuOpen(true)}
-            btnColor="teal"
-            btnText={t('Customise link')}
-            btnIcon="pen"
-          />
+      {!hideDownloadBar && (
+        <DownloadBtnContainer>
+          <div className="flex flex-wrap justify-center gap-2">
+            <DownloadButton
+              onClickCallback={() => window.open(videoUrl)}
+              btnColor="blue"
+              btnText={t('Download')}
+              btnIcon="file-download"
+            />
+            <DownloadButton
+              onClickCallback={() => {
+                clipboard.copy(`${getBaseUrl()}/api/raw/?path=${asPath}${hashedToken ? `&odpt=${hashedToken}` : ''}`)
+                toast.success(t('Copied direct link to clipboard.'))
+              }}
+              btnColor="pink"
+              btnText={t('Copy direct link')}
+              btnIcon="copy"
+            />
+            <DownloadButton
+              onClickCallback={() => setMenuOpen(true)}
+              btnColor="teal"
+              btnText={t('Customise link')}
+              btnIcon="pen"
+            />
           </div>
-      </DownloadBtnContainer>
+        </DownloadBtnContainer>
+      )}
     </>
   )
 }
