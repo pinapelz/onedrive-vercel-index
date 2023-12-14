@@ -200,6 +200,9 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
     // Find README.md file to render
     const readmeFile = folderChildren.find(c => c.name.toLowerCase() === 'readme.md')
 
+    // Find some video file to render
+    const videoFile : any = folderChildren.find(c => Boolean(c.video))
+
     // Filtered file list helper
     const getFiles = () => folderChildren.filter(c => !c.folder && c.name !== '.password')
 
@@ -380,6 +383,13 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
           </div>
         )}
 
+        {videoFile && (
+          <div className="mt-4">
+            <VideoPreview file={videoFile} />
+          </div>
+        )
+        }
+        
         {readmeFile && (
           <div className="mt-4">
             <MarkdownPreview file={readmeFile} path={path} standalone={false} />
