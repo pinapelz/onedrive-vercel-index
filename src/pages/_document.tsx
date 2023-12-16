@@ -6,7 +6,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="description" content="Deep down the rabbit hole where there is no bottom" />
+          <meta name="description" content="Archive of stuff" />
           <link rel="icon" href="/icons/64.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
